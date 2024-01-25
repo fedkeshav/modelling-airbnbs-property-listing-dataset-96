@@ -1,7 +1,6 @@
-#%%
-import pandas as pd
 import ast
 from dotenv import load_dotenv
+import pandas as pd
 import os
 
 # Load environment variables from .env file
@@ -142,15 +141,19 @@ def export_to_csv (df: pd.DataFrame, directory_to_save: str, filename: str) -> s
     '''
     df.to_csv(f'{directory_to_save}/{filename}')
 
-def load_airbnb_data(df: pd.DataFrame ) -> tuple:
+def load_airbnb_data() -> tuple:
     '''
     Returns a tuple containing feature columns and labels for data science
 
-    Inputs: DataFrame, list of feature columns, and label column
+    Inputs: None
 
     Returns:
         Tuple with dataframe for features and a series for label
     '''
+    # Loading numerical features and label
+    load_dotenv() # Load environment variables from .env file
+    directory = os.getenv("DATA_DIR") # Imports directory path from .env file
+    df = import_data_to_df(directory, 'listings_clean.csv')
     filter_df = df.drop('Price_Night', axis = 1)
     numeric_feature_columns = filter_df.select_dtypes(include=['number']).columns
     features = filter_df[numeric_feature_columns]
@@ -165,9 +168,3 @@ if __name__=="__main__":
     clean_df = tabular.clean_tabular_data(df)
     export_to_csv(clean_df, directory, 'listings_clean.csv')
     df_characteristics(clean_df)
-
-#%%
-features, labels = load_airbnb_data(clean_df)
-features.info()
-print(labels)
-# %%

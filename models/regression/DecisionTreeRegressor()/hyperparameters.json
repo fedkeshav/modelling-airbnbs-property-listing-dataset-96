@@ -1,0 +1,1 @@
+{"ccp_alpha": 1000, "criterion": "squared_error", "min_samples_split": 5, "random_state": 42}
