@@ -2,3 +2,4 @@
 *.txt
 Python/__pycache__
 Python/*.ipynb
+.DS_Store
