@@ -5,7 +5,9 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from b_modelling_functions import load_and_standardise_numerical_data, BestChoiceModels
 from sklearn.metrics import mean_squared_error
+import os
 import pandas as pd
+from dotenv import load_dotenv
 
 # Define all the model classes and their hyperparameters to test    
 model_classes = [SGDRegressor(),DecisionTreeRegressor(), 
@@ -58,11 +60,13 @@ model_type = 'regression'
 reg_scoring_metrics = ['neg_mean_squared_error', 'r2']
 reg_refit_metric = 'neg_mean_squared_error'
 
+
 #%%
 # Evaluate the best version of all models
 if __name__ == "__main__":
     X_train_scaled, X_test_scaled, y_train, y_test = load_and_standardise_numerical_data('Price_Night')
     bcm = BestChoiceModels()
+
     bcm.evaluate_all_models(model_type = model_type, 
                             model_class_and_hyperparameters = model_class_and_hyperparameters,
                             X_train = X_train_scaled, y_train = y_train,

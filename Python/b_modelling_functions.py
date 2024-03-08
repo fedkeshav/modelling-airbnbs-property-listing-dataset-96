@@ -1,16 +1,19 @@
 #%%
+from datetime import datetime
 from dotenv import load_dotenv
+import os
 import itertools
 import joblib
 import json
 import numpy as np
-import os
+
 import pandas as pd
 from a_tabular_data import load_airbnb_data
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.preprocessing import StandardScaler
 import typing
+import torch
 #%%
 
 class CustomHyperparameterTuning():
@@ -201,6 +204,7 @@ class BestChoiceModels():
         with open(os.path.join(models_class_subfolder, 'metrics.json'), 'w') as json_file: 
             json.dump(best_metrics, json_file)
 
+
     def evaluate_all_models(self, model_type: str, model_class_and_hyperparameters: dict, X_train: pd.DataFrame, y_train: pd.Series,
                             scoring_metrics: list, refit_metric: str, folds: int = 5) -> None:
         '''
@@ -245,7 +249,7 @@ class BestChoiceModels():
         
         Inputs: 
         --------------
-        model_type: this can take either 'regression' or 'classification'
+        model_type: regression or classification
 
         model_class_and_hyperparameters: A dictionary of all model classes and their associated dictionary of hyperparameter values for tuning
         
@@ -267,13 +271,14 @@ class BestChoiceModels():
         best_model = None
         best_model_hyperparameters = None
         best_model_metric = float('-inf')
+
         # Create the right folder to look into
         load_dotenv() 
         models_folder = os.getenv(f'MODELS_DIR') 
-        models_subfolder = os.path.join(models_folder, model_type)
+        subfolder = os.path.join(models_folder, model_type)
 
         for model_class in model_class_and_hyperparameters.keys():
-            folder = os.path.join(models_subfolder, f'{model_class}')
+            folder = os.path.join(subfolder, f'{model_class}')
             metrics_filepath = os.path.join(folder, 'metrics.json')
             # Load the metrics from the file
             with open(metrics_filepath, 'r') as file:
@@ -285,7 +290,7 @@ class BestChoiceModels():
                 best_model = model_class
 
         # Open the folder of the best model and load the saved model, hyperparameters and metrics
-        best_model_folder = os.path.join(models_subfolder, f'{best_model}')
+        best_model_folder = os.path.join(subfolder, f'{best_model}')
         model_path = os.path.join(best_model_folder, 'model.joblib')
         hyperparameters_path = os.path.join(best_model_folder, 'hyperparameters.json')
         metrics_path = os.path.join(best_model_folder, 'metrics.json')
