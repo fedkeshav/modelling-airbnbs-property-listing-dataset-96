@@ -163,13 +163,13 @@ class BestChoiceModels():
             best_metrics_dict[var] = grid_search.cv_results_[f'mean_test_{var}'][best_index]
         return best_model, best_hyperparameter_dict, best_metrics_dict
 
-    def save_model(self, model_type : str , model_class: str,  best_model, best_hyperparameter: dict, best_metrics: dict) -> None: 
+    def save_model(self, storage_folder: str , model_class: str,  best_model, best_hyperparameter: dict, best_metrics: dict) -> None: 
         '''
         Save model, hyperparameters and metrics after tuning
 
         Inputs:
         --------------
-        model_type: can be either 'regression' or 'classification'
+        storage_folder: where the results are to be stored
         
         model_class: can be any of the model classes. E.g., SGDRegressor()
         
@@ -182,18 +182,8 @@ class BestChoiceModels():
         Returns:
         --------------
         Nothing
-        
         '''
-        # Check if model type is valid as it is used to make relevant sub-folders
-        if model_type not in ['regression', 'classification']:
-            raise ValueError("Invalid input_value. Please choose 'regression' or 'classification'.")
-
-        load_dotenv() # Load environment variables from .env file
-        models_folder = os.getenv(f'MODELS_DIR') # Imports directory path from .env file
-        models_type_folder = os.path.join(models_folder, model_type)
-        if os.path.exists(models_type_folder) == False:
-            os.mkdir(models_type_folder)
-        models_class_subfolder = os.path.join(models_type_folder, model_class)
+        models_class_subfolder = os.path.join(storage_folder, model_class)
         if os.path.exists(models_class_subfolder) == False:
             os.mkdir(models_class_subfolder)
 
@@ -204,15 +194,14 @@ class BestChoiceModels():
         with open(os.path.join(models_class_subfolder, 'metrics.json'), 'w') as json_file: 
             json.dump(best_metrics, json_file)
 
-
-    def evaluate_all_models(self, model_type: str, model_class_and_hyperparameters: dict, X_train: pd.DataFrame, y_train: pd.Series,
+    def evaluate_all_models(self, storage_folder: str, model_class_and_hyperparameters: dict, X_train: pd.DataFrame, y_train: pd.Series,
                             scoring_metrics: list, refit_metric: str, folds: int = 5) -> None:
         '''
         Chooses optimal hyperparameters of each model and saves the best version of each model
         
         Inputs: 
         --------------
-        model_type: Takes only two values - 'regression' or 'classification'
+        storage_folder: where the results are to be stored
 
         model_class_and_hyperparameters: A dictionary of all model classes as keys and their associated values as dictionary of hyperparameter values for tuning
         
@@ -240,16 +229,16 @@ class BestChoiceModels():
                                     scoring_metrics = scoring_metrics, refit_metric = refit_metric,  folds = folds))
 
             # Save the best version of the model
-            self.save_model(model_type = model_type, model_class = f'{model_class}', 
+            self.save_model(storage_folder = storage_folder, model_class = f'{model_class}', 
                     best_model = best_model, best_hyperparameter = best_hyperparameters, best_metrics = best_metrics)
 
-    def find_best_model(self, model_type: str, model_class_and_hyperparameters: dict, scoring_metrics: list, optimisation_metric: str):
+    def find_best_model(self, storage_folder: str, model_class_and_hyperparameters: dict, scoring_metrics: list, optimisation_metric: str):
         '''
         Finds the best model out of all evaluated models with their tuned hyperparamaters
         
         Inputs: 
         --------------
-        model_type: regression or classification
+        storage_folder: where the results are to be stored
 
         model_class_and_hyperparameters: A dictionary of all model classes and their associated dictionary of hyperparameter values for tuning
         
@@ -269,16 +258,10 @@ class BestChoiceModels():
             raise ValueError("Optimisation metric is not part of scoring metrics")
         # Initialise the variables of interest
         best_model = None
-        best_model_hyperparameters = None
         best_model_metric = float('-inf')
-
-        # Create the right folder to look into
-        load_dotenv() 
-        models_folder = os.getenv(f'MODELS_DIR') 
-        subfolder = os.path.join(models_folder, model_type)
-
+        # Opening all folders to check results
         for model_class in model_class_and_hyperparameters.keys():
-            folder = os.path.join(subfolder, f'{model_class}')
+            folder = os.path.join(storage_folder, f'{model_class}')
             metrics_filepath = os.path.join(folder, 'metrics.json')
             # Load the metrics from the file
             with open(metrics_filepath, 'r') as file:
@@ -290,7 +273,7 @@ class BestChoiceModels():
                 best_model = model_class
 
         # Open the folder of the best model and load the saved model, hyperparameters and metrics
-        best_model_folder = os.path.join(subfolder, f'{best_model}')
+        best_model_folder = os.path.join(storage_folder, f'{best_model}')
         model_path = os.path.join(best_model_folder, 'model.joblib')
         hyperparameters_path = os.path.join(best_model_folder, 'hyperparameters.json')
         metrics_path = os.path.join(best_model_folder, 'metrics.json')

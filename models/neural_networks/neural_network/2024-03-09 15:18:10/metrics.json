@@ -1,0 +1,8 @@
+{
+   "average_last_epoch_train_loss": 10471.13524169922,
+   "average_last_epoch_train_r2": 0.2778327763080597,
+   "average_last_epoch_validation_loss": 5962.5462890625,
+   "average_last_epoch_validation_r2": 0.2130018174648285,
+   "average_epoch_training_duration": 0.3856632709503174,
+   "inference_latency": 0.00021727561950683595
+}

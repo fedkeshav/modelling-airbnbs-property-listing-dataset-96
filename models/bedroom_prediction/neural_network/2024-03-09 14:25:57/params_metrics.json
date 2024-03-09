@@ -1,0 +1,506 @@
+[
+      1,
+      {
+            "params": {
+                  "optimiser": "SGD",
+                  "lr": 0.001,
+                  "hidden_layer_width": 4,
+                  "hidden_layer_depth": 2
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 2.2361284375190733,
+                  "average_last_epoch_train_r2": -1.2129709720611572,
+                  "average_last_epoch_validation_loss": 2.16880065202713,
+                  "average_last_epoch_validation_r2": -1.328513503074646,
+                  "average_epoch_training_duration": 0.453847336769104,
+                  "inference_latency": 0.00023154139518737792
+            }
+      },
+      "",
+      "",
+      2,
+      {
+            "params": {
+                  "optimiser": "SGD",
+                  "lr": 0.001,
+                  "hidden_layer_width": 4,
+                  "hidden_layer_depth": 4
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 1.9340501844882965,
+                  "average_last_epoch_train_r2": -0.757663905620575,
+                  "average_last_epoch_validation_loss": 1.2946685433387757,
+                  "average_last_epoch_validation_r2": -0.9116039276123047,
+                  "average_epoch_training_duration": 0.4744406700134277,
+                  "inference_latency": 0.00031243681907653807
+            }
+      },
+      "",
+      "",
+      3,
+      {
+            "params": {
+                  "optimiser": "SGD",
+                  "lr": 0.001,
+                  "hidden_layer_width": 7,
+                  "hidden_layer_depth": 2
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 2.151270163059235,
+                  "average_last_epoch_train_r2": -0.9401634931564331,
+                  "average_last_epoch_validation_loss": 1.3530628263950348,
+                  "average_last_epoch_validation_r2": -0.9398412704467773,
+                  "average_epoch_training_duration": 0.7198105573654174,
+                  "inference_latency": 0.0003176891803741455
+            }
+      },
+      "",
+      "",
+      4,
+      {
+            "params": {
+                  "optimiser": "SGD",
+                  "lr": 0.001,
+                  "hidden_layer_width": 7,
+                  "hidden_layer_depth": 4
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 2.127437236905098,
+                  "average_last_epoch_train_r2": -0.9771930575370789,
+                  "average_last_epoch_validation_loss": 1.4174531698226929,
+                  "average_last_epoch_validation_r2": -0.8798003196716309,
+                  "average_epoch_training_duration": 0.6088686943054199,
+                  "inference_latency": 0.0005791234970092773
+            }
+      },
+      "",
+      "",
+      5,
+      {
+            "params": {
+                  "optimiser": "SGD",
+                  "lr": 0.01,
+                  "hidden_layer_width": 4,
+                  "hidden_layer_depth": 2
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 0.22779063023626805,
+                  "average_last_epoch_train_r2": 0.749971330165863,
+                  "average_last_epoch_validation_loss": 0.20055680871009826,
+                  "average_last_epoch_validation_r2": 0.5412132143974304,
+                  "average_epoch_training_duration": 0.6415940523147583,
+                  "inference_latency": 0.000263141393661499
+            }
+      },
+      "",
+      "",
+      6,
+      {
+            "params": {
+                  "optimiser": "SGD",
+                  "lr": 0.01,
+                  "hidden_layer_width": 4,
+                  "hidden_layer_depth": 4
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 1.1914653837680818,
+                  "average_last_epoch_train_r2": -0.020445197820663452,
+                  "average_last_epoch_validation_loss": 0.8122892677783966,
+                  "average_last_epoch_validation_r2": -0.1041756123304367,
+                  "average_epoch_training_duration": 0.4647028923034668,
+                  "inference_latency": 0.00035267472267150877
+            }
+      },
+      "",
+      "",
+      7,
+      {
+            "params": {
+                  "optimiser": "SGD",
+                  "lr": 0.01,
+                  "hidden_layer_width": 7,
+                  "hidden_layer_depth": 2
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 0.3955945290625095,
+                  "average_last_epoch_train_r2": 0.5808050036430359,
+                  "average_last_epoch_validation_loss": 0.2996433973312378,
+                  "average_last_epoch_validation_r2": 0.5925589799880981,
+                  "average_epoch_training_duration": 0.49832098484039306,
+                  "inference_latency": 0.0002987217903137207
+            }
+      },
+      "",
+      "",
+      8,
+      {
+            "params": {
+                  "optimiser": "SGD",
+                  "lr": 0.01,
+                  "hidden_layer_width": 7,
+                  "hidden_layer_depth": 4
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 1.1919166073203087,
+                  "average_last_epoch_train_r2": -0.050899095833301544,
+                  "average_last_epoch_validation_loss": 0.7952923059463501,
+                  "average_last_epoch_validation_r2": -0.25620728731155396,
+                  "average_epoch_training_duration": 0.6315641880035401,
+                  "inference_latency": 0.00036448836326599123
+            }
+      },
+      "",
+      "",
+      9,
+      {
+            "params": {
+                  "optimiser": "SGD",
+                  "lr": 0.1,
+                  "hidden_layer_width": 4,
+                  "hidden_layer_depth": 2
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 0.20131312012672425,
+                  "average_last_epoch_train_r2": 0.7857972383499146,
+                  "average_last_epoch_validation_loss": 0.1355810910463333,
+                  "average_last_epoch_validation_r2": 0.7701798677444458,
+                  "average_epoch_training_duration": 0.5957357883453369,
+                  "inference_latency": 0.000265425443649292
+            }
+      },
+      "",
+      "",
+      10,
+      {
+            "params": {
+                  "optimiser": "SGD",
+                  "lr": 0.1,
+                  "hidden_layer_width": 4,
+                  "hidden_layer_depth": 4
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 1.1925111025571824,
+                  "average_last_epoch_train_r2": -0.05166245624423027,
+                  "average_last_epoch_validation_loss": 0.8214195609092713,
+                  "average_last_epoch_validation_r2": -0.09249186515808105,
+                  "average_epoch_training_duration": 0.5608359813690186,
+                  "inference_latency": 0.00034237980842590334
+            }
+      },
+      "",
+      "",
+      11,
+      {
+            "params": {
+                  "optimiser": "SGD",
+                  "lr": 0.1,
+                  "hidden_layer_width": 7,
+                  "hidden_layer_depth": 2
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 0.20367825403809547,
+                  "average_last_epoch_train_r2": 0.7571708559989929,
+                  "average_last_epoch_validation_loss": 0.14441792741417886,
+                  "average_last_epoch_validation_r2": 0.7551395893096924,
+                  "average_epoch_training_duration": 0.5818644762039185,
+                  "inference_latency": 0.0002698230743408203
+            }
+      },
+      "",
+      "",
+      12,
+      {
+            "params": {
+                  "optimiser": "SGD",
+                  "lr": 0.1,
+                  "hidden_layer_width": 7,
+                  "hidden_layer_depth": 4
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 0.2769967682659626,
+                  "average_last_epoch_train_r2": 0.7264520525932312,
+                  "average_last_epoch_validation_loss": 0.2533536314964294,
+                  "average_last_epoch_validation_r2": 0.36212438344955444,
+                  "average_epoch_training_duration": 0.6191527366638183,
+                  "inference_latency": 0.00042235374450683594
+            }
+      },
+      "",
+      "",
+      13,
+      {
+            "params": {
+                  "optimiser": "Adagrad",
+                  "lr": 0.001,
+                  "hidden_layer_width": 4,
+                  "hidden_layer_depth": 2
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 5.297447669506073,
+                  "average_last_epoch_train_r2": -4.807107448577881,
+                  "average_last_epoch_validation_loss": 4.128045225143433,
+                  "average_last_epoch_validation_r2": -6.765796661376953,
+                  "average_epoch_training_duration": 0.47055094242095946,
+                  "inference_latency": 0.000265965461730957
+            }
+      },
+      "",
+      "",
+      14,
+      {
+            "params": {
+                  "optimiser": "Adagrad",
+                  "lr": 0.001,
+                  "hidden_layer_width": 4,
+                  "hidden_layer_depth": 4
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 5.516308772563934,
+                  "average_last_epoch_train_r2": -4.683467864990234,
+                  "average_last_epoch_validation_loss": 4.745513963699341,
+                  "average_last_epoch_validation_r2": -4.599120140075684,
+                  "average_epoch_training_duration": 0.407232928276062,
+                  "inference_latency": 0.0002852487564086914
+            }
+      },
+      "",
+      "",
+      15,
+      {
+            "params": {
+                  "optimiser": "Adagrad",
+                  "lr": 0.001,
+                  "hidden_layer_width": 7,
+                  "hidden_layer_depth": 2
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 4.128548419475555,
+                  "average_last_epoch_train_r2": -3.049069881439209,
+                  "average_last_epoch_validation_loss": 3.167052459716797,
+                  "average_last_epoch_validation_r2": -4.420380592346191,
+                  "average_epoch_training_duration": 0.5538956165313721,
+                  "inference_latency": 0.0003429102897644043
+            }
+      },
+      "",
+      "",
+      16,
+      {
+            "params": {
+                  "optimiser": "Adagrad",
+                  "lr": 0.001,
+                  "hidden_layer_width": 7,
+                  "hidden_layer_depth": 4
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 3.1426705181598664,
+                  "average_last_epoch_train_r2": -2.0405349731445312,
+                  "average_last_epoch_validation_loss": 2.397308588027954,
+                  "average_last_epoch_validation_r2": -2.4301109313964844,
+                  "average_epoch_training_duration": 0.39619181156158445,
+                  "inference_latency": 0.0002919638156890869
+            }
+      },
+      "",
+      "",
+      17,
+      {
+            "params": {
+                  "optimiser": "Adagrad",
+                  "lr": 0.01,
+                  "hidden_layer_width": 4,
+                  "hidden_layer_depth": 2
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 0.3483598534017801,
+                  "average_last_epoch_train_r2": 0.5961891412734985,
+                  "average_last_epoch_validation_loss": 0.2677119731903076,
+                  "average_last_epoch_validation_r2": 0.6365472674369812,
+                  "average_epoch_training_duration": 0.40439548492431643,
+                  "inference_latency": 0.0002068793773651123
+            }
+      },
+      "",
+      "",
+      18,
+      {
+            "params": {
+                  "optimiser": "Adagrad",
+                  "lr": 0.01,
+                  "hidden_layer_width": 4,
+                  "hidden_layer_depth": 4
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 4.8904506206512455,
+                  "average_last_epoch_train_r2": -4.011235237121582,
+                  "average_last_epoch_validation_loss": 3.798938179016113,
+                  "average_last_epoch_validation_r2": -5.429635047912598,
+                  "average_epoch_training_duration": 0.6109874725341797,
+                  "inference_latency": 0.0003616487979888916
+            }
+      },
+      "",
+      "",
+      19,
+      {
+            "params": {
+                  "optimiser": "Adagrad",
+                  "lr": 0.01,
+                  "hidden_layer_width": 7,
+                  "hidden_layer_depth": 2
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 0.4063417758792639,
+                  "average_last_epoch_train_r2": 0.5556145906448364,
+                  "average_last_epoch_validation_loss": 0.3605254404246807,
+                  "average_last_epoch_validation_r2": 0.5134808421134949,
+                  "average_epoch_training_duration": 0.5273378372192383,
+                  "inference_latency": 0.0002558135986328125
+            }
+      },
+      "",
+      "",
+      20,
+      {
+            "params": {
+                  "optimiser": "Adagrad",
+                  "lr": 0.01,
+                  "hidden_layer_width": 7,
+                  "hidden_layer_depth": 4
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 0.364071299135685,
+                  "average_last_epoch_train_r2": 0.6194819211959839,
+                  "average_last_epoch_validation_loss": 0.28069168627262114,
+                  "average_last_epoch_validation_r2": 0.6274331212043762,
+                  "average_epoch_training_duration": 0.4902587652206421,
+                  "inference_latency": 0.0003191673755645752
+            }
+      },
+      "",
+      "",
+      21,
+      {
+            "params": {
+                  "optimiser": "Adagrad",
+                  "lr": 0.1,
+                  "hidden_layer_width": 4,
+                  "hidden_layer_depth": 2
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 0.17696053311228752,
+                  "average_last_epoch_train_r2": 0.800590991973877,
+                  "average_last_epoch_validation_loss": 0.15783856809139252,
+                  "average_last_epoch_validation_r2": 0.7425874471664429,
+                  "average_epoch_training_duration": 0.5386183977127075,
+                  "inference_latency": 0.0002509117126464844
+            }
+      },
+      "",
+      "",
+      22,
+      {
+            "params": {
+                  "optimiser": "Adagrad",
+                  "lr": 0.1,
+                  "hidden_layer_width": 4,
+                  "hidden_layer_depth": 4
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 0.18624469824135303,
+                  "average_last_epoch_train_r2": 0.7882335186004639,
+                  "average_last_epoch_validation_loss": 0.12602048553526402,
+                  "average_last_epoch_validation_r2": 0.8383426666259766,
+                  "average_epoch_training_duration": 0.6333255529403686,
+                  "inference_latency": 0.00039352774620056153
+            }
+      },
+      "",
+      "",
+      23,
+      {
+            "params": {
+                  "optimiser": "Adagrad",
+                  "lr": 0.1,
+                  "hidden_layer_width": 7,
+                  "hidden_layer_depth": 2
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 0.18431418500840663,
+                  "average_last_epoch_train_r2": 0.7748913764953613,
+                  "average_last_epoch_validation_loss": 0.1301319882273674,
+                  "average_last_epoch_validation_r2": 0.7616968154907227,
+                  "average_epoch_training_duration": 0.5543896913528442,
+                  "inference_latency": 0.000249403715133667
+            }
+      },
+      "",
+      "",
+      24,
+      {
+            "params": {
+                  "optimiser": "Adagrad",
+                  "lr": 0.1,
+                  "hidden_layer_width": 7,
+                  "hidden_layer_depth": 4
+            }
+      },
+      {
+            "performance_metrics": {
+                  "average_last_epoch_train_loss": 0.17279775701463224,
+                  "average_last_epoch_train_r2": 0.8130283355712891,
+                  "average_last_epoch_validation_loss": 0.13821959346532822,
+                  "average_last_epoch_validation_r2": 0.6537046432495117,
+                  "average_epoch_training_duration": 0.5208194971084594,
+                  "inference_latency": 0.000327455997467041
+            }
+      },
+      "",
+      ""
+]

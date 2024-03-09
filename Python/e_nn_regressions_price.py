@@ -14,7 +14,6 @@ from torch.utils.data import Dataset, DataLoader
 from torch.utils.tensorboard import SummaryWriter
 import torch.nn.functional as F
 from torchmetrics import R2Score
-import yaml
 
 
 class AirbnbNightlyPriceRegressionDataset(Dataset):
@@ -252,13 +251,13 @@ def generate_nn_configs(hyperparam_dict: dict) -> list:
         configs.append(dict(zip(keys, v)))
     return configs
 
-def save_model(subfolder: str,  model, best_hyperparameter: dict, best_metrics: dict) -> None: 
+def save_model(storage_folder: str,  model, best_hyperparameter: dict, best_metrics: dict) -> None: 
     '''
     Save model, hyperparameters and metrics after tuning
 
     Inputs:
     --------------
-    subfolder: the folder where results need to be saved
+    storage_folder: the folder where results need to be saved
     
     best_model: model that performs best along with its hyperparameters
     
@@ -273,13 +272,13 @@ def save_model(subfolder: str,  model, best_hyperparameter: dict, best_metrics: 
     '''
     # Save the model, hyperparameters and metrics in the above folder
     sd =  model.state_dict()
-    torch.save(sd, os.path.join(subfolder, 'model.pt')) 
-    with open(os.path.join(subfolder, 'hyperparameters.json'), 'w') as json_file: 
-        json.dump(best_hyperparameter, json_file)
-    with open(os.path.join(subfolder, 'metrics.json'), 'w') as json_file: 
-        json.dump(best_metrics, json_file)
+    torch.save(sd, os.path.join(storage_folder, 'model.pt')) 
+    with open(os.path.join(storage_folder, 'hyperparameters.json'), 'w') as json_file: 
+        json.dump(best_hyperparameter, json_file, indent = 4)
+    with open(os.path.join(storage_folder, 'metrics.json'), 'w') as json_file: 
+        json.dump(best_metrics, json_file, indent = 3)
 
-def find_best_nn(input_size: int, output_size: int, hyperparam_dict: dict, train_data: DataLoader, validation_data: DataLoader, epochs: int = 10) -> tuple:
+def find_best_nn(storage_folder: str,input_size: int, output_size: int, hyperparam_dict: dict, train_data: DataLoader, validation_data: DataLoader, epochs: int = 10) -> tuple:
     '''
     Finds the best neural network configuration which minimises validation loss. 
     Saves all hyperparameters and their results. 
@@ -287,7 +286,19 @@ def find_best_nn(input_size: int, output_size: int, hyperparam_dict: dict, train
 
     Inputs
     --------------
-    None
+    storage_folder: Folder where to store results
+    
+    input_size : Number of features
+
+    output_size : Number of label variables (typically = 1) 
+
+    hyperparam_dict: Dictionary with multiple values to test for hyperparameters
+
+    train_data: Training data as Dataloader object
+
+    validation_data: Validation data as Dataloader object
+
+    epochs: Number of times to train the mode. Default value = 10
 
     Returns
     --------------
@@ -326,10 +337,11 @@ def find_best_nn(input_size: int, output_size: int, hyperparam_dict: dict, train
             best_hyperparams = config
 
     # Saving the best model, hyperparameters and associated metrics
-    load_dotenv() # Load environment variables from .env file
-    nn_folder = os.getenv(f'NN_MODELS_DIR') # Imports directory path from .env file
     current_datetime = datetime.now()
     formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    nn_folder = os.path.join(storage_folder, 'neural_network')
+    if os.path.exists(nn_folder) == False:
+        os.mkdir(nn_folder)
     nn_time_folder = os.path.join(nn_folder, formatted_datetime)
     if os.path.exists(nn_time_folder) == False:
         os.mkdir(nn_time_folder)
@@ -341,20 +353,43 @@ def find_best_nn(input_size: int, output_size: int, hyperparam_dict: dict, train
 
     return model, best_metrics, best_hyperparams
 
-#%%
-hyperparams_dict = {
-    'optimiser' : ['SGD', 'Adagrad'],
-    'lr' : [0.001, 0.01, 0.1],
-    'hidden_layer_width' : [4, 7],
-    'hidden_layer_depth' : [2, 4]
-}
+def nn_hyperparams_dict() -> dict:
+    '''
+    Creates a standard dictionary containing various hyperparameters and associated values to test
+    
+    Inputs: 
+    --------------
+    None       
+    
+    Returns:
+    --------------
+    A dictionary containing various hyperparameters and associated values to test
+    '''
+    hyperparams_dict = {
+        'optimiser' : ['SGD', 'Adagrad'],
+        'lr' : [0.001, 0.01, 0.1],
+        'hidden_layer_width' : [4, 7],
+        'hidden_layer_depth' : [2, 4]
+    }
+    return hyperparams_dict
 
+# Retrieving hyperparams for testing
+hyperparams_dict = nn_hyperparams_dict() 
+# Defining input folder where results can be saved
+load_dotenv() 
+storage_folder = os.getenv(f'NN_MODELS_DIR') 
+
+#%%
 if __name__ == "__main__":
     features, labels = load_airbnb_data('Price_Night')
     data = pd.concat([features, labels], axis = 1)
     train_loader, validation_loader, test_loader = get_data_loader(data)
     input_size = features.shape[1]
     output_size = 1
-    model, best_metrics, best_hyperparams = find_best_nn(input_size, output_size, hyperparams_dict,train_loader, validation_loader, epochs = 15)
+    model, best_metrics, best_hyperparams = find_best_nn(
+                                        storage_folder,
+                                        input_size, output_size, 
+                                        hyperparams_dict,train_loader, 
+                                        validation_loader, epochs = 15)
     print(f'Metrics: {best_metrics}')
     print(f'Hyperparameters: {best_hyperparams}')

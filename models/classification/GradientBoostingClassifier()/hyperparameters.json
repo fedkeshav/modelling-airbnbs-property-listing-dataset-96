@@ -1,1 +1,1 @@
-{"ccp_alpha": 0.0002, "learning_rate": 0.1, "n_estimators": 100, "random_state": 42, "subsample": 0.5}
+{"ccp_alpha": 0.0004, "learning_rate": 0.1, "n_estimators": 100, "random_state": 42, "subsample": 1}

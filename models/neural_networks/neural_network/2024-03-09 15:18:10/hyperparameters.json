@@ -1,0 +1,6 @@
+{
+    "optimiser": "Adagrad",
+    "lr": 0.1,
+    "hidden_layer_width": 7,
+    "hidden_layer_depth": 2
+}

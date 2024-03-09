@@ -1,1 +1,1 @@
-{"criterion": "squared_error", "n_estimators": 100, "random_state": 42}
+{"ccp_alpha": 100, "criterion": "squared_error", "max_depth": 12, "max_features": 3, "min_samples_split": 10, "n_estimators": 100, "random_state": 42}
